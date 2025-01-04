@@ -1,4 +1,4 @@
-import { TextInput, Platform, StyleSheet } from 'react-native';
+import { TextInput, Platform, StyleSheet, View } from 'react-native';
 import React, { useState } from 'react';
 import colors from '@/config/colors';
 
@@ -11,20 +11,29 @@ export default function AppTextInput({ label, style }: AppTextInputProps) {
   const [task, setTask] = useState('');
 
   return (
-    <TextInput
-      placeholder={label}
-      value={task}
-      onChangeText={setTask}
-      style={[styles.input, style]}
-      placeholderTextColor={colors.greyMedium}
-    />
+    <View style={[styles.container, style]}>
+      <TextInput
+        placeholder={label}
+        value={task}
+        onChangeText={setTask}
+        style={styles.input}
+        placeholderTextColor={colors.greyMedium}
+      />
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
-  input: {
-    width: '100%',
+  container: {
+    flex: 1,
     height: '100%',
+    borderBottomColor: colors.greyMedium,
+    borderBottomWidth: 1,
+    borderRightWidth: 0,
+    justifyContent: 'center',
+    alignItems: 'flex-start',
+  },
+  input: {
     fontSize: 16,
     paddingHorizontal: 10,
     paddingVertical: 5,
@@ -33,8 +42,5 @@ const styles = StyleSheet.create({
       outlineWidth: 0,
       boxSizing: 'border-box',
     }),
-
-    borderBottomColor: colors.greyMedium,
-    borderBottomWidth: 1,
   },
 });

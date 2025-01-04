@@ -17,17 +17,21 @@ export default function AppButton({ children, onPress }: AppButtonProps) {
 
 const styles = StyleSheet.create({
   container: {
+    marginRight: 10,
     height: '100%',
-    justifyContent: 'center',
-    alignItems: 'center',
+    borderWidth: 1,
+    borderTopRightRadius: 5,
+    borderBottomRightRadius: 5,
+    borderColor: colors.primaryDark,
   },
   text: {
     height: '100%',
-    textAlign: 'center',
-    backgroundColor: colors.primaryMedium,
-    color: colors.white,
+    justifyContent: 'center',
+    alignItems: 'center',
+    textAlignVertical: 'center',
+    backgroundColor: colors.primaryMediumLight,
+    color: colors.greyDark,
     padding: 10,
-    borderRadius: 5,
     fontSize: 16,
   },
 });
