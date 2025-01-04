@@ -3,35 +3,40 @@ import React from 'react';
 import colors from '@/config/colors';
 
 type AppButtonProps = {
-  children: string;
+  title: string;
   onPress: () => void;
+  color: string;
 };
 
-export default function AppButton({ children, onPress }: AppButtonProps) {
+export default function AppButton({
+  title,
+  onPress,
+  color = colors.primaryMediumLight,
+}: AppButtonProps) {
   return (
-    <TouchableOpacity style={styles.container} onPress={onPress}>
-      <Text style={styles.text}>{children}</Text>
+    <TouchableOpacity style={styles.button} onPress={onPress}>
+      <Text style={styles.text}>{title}</Text>
     </TouchableOpacity>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    marginRight: 10,
+  button: {
     height: '100%',
     borderWidth: 1,
     borderTopRightRadius: 5,
     borderBottomRightRadius: 5,
     borderColor: colors.primaryDark,
+    justifyContent: 'center',
+    alignItems: 'center',
+    padding: 15,
+    backgroundColor: colors.primaryMediumLight,
   },
   text: {
     height: '100%',
-    justifyContent: 'center',
-    alignItems: 'center',
     textAlignVertical: 'center',
-    backgroundColor: colors.primaryMediumLight,
     color: colors.greyDark,
-    padding: 10,
     fontSize: 16,
+    fontWeight: 'bold',
   },
 });
