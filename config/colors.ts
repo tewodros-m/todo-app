@@ -1,3 +1,5 @@
+import { green } from 'react-native-reanimated/lib/typescript/Colors';
+
 export default {
   primary: 'rgba(227, 31, 227, 0.9)',
   primaryDark: 'rgba(188, 11, 188, 1)',
@@ -11,4 +13,6 @@ export default {
   greyMedium: 'rgba(190, 190, 190, 1)',
   white: '#fff',
   black: '#000',
+  red: 'rgb(235, 51, 51)',
+  green: 'rgba(22, 224, 22, 0.88)',
 };
