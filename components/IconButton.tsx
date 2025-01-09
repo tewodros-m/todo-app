@@ -33,7 +33,7 @@ type IconButtonProps = {
 export default function IconButton({
   iconType,
   iconName,
-  size = 20,
+  size = 14,
   color = colors.primaryMedium,
   onPress,
   style,
