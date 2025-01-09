@@ -29,7 +29,7 @@ const styles = StyleSheet.create({
     borderColor: colors.primaryDark,
     justifyContent: 'center',
     alignItems: 'center',
-    padding: 15,
+    padding: 10,
     backgroundColor: colors.primaryMediumLight,
   },
   text: {

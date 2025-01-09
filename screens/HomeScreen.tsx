@@ -5,15 +5,21 @@ import { Alert, StyleSheet, View } from 'react-native';
 import AppButton from '@/components/AppButton';
 import colors from '@/config/colors';
 import AppText from '@/components/AppText';
+import Task from '@/components/Task';
 
 export default function HomeScreen() {
   return (
     <Screen style={styles.screen}>
       <View style={styles.searchContainer}>
-        <AppTextInput label='Search...' style={styles.input} />
-        <AppButton onPress={() => {}}>Search</AppButton>
+        <AppTextInput icon='search-outline' style={styles.input} />
+        <AppButton
+          title='Search'
+          onPress={() => {}}
+          color={colors.primaryMediumLight}
+        />
       </View>
       <AppText>Today's tasks</AppText>
+      <Task />
     </Screen>
   );
 }
@@ -22,12 +28,13 @@ const styles = StyleSheet.create({
   screen: {
     gap: 10,
     backgroundColor: colors.white,
+    marginHorizontal: 10,
   },
   searchContainer: {
     marginVertical: 15,
     marginHorizontal: 5,
     width: '100%',
-    height: 50,
+    height: 40,
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
