@@ -1,27 +1,18 @@
-import React, { useState } from 'react';
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import React from 'react';
+import { View, TouchableOpacity, StyleSheet } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import colors from '@/config/colors';
 
 type CheckBoxProps = {
   isChecked: boolean;
-  onPress?: () => void;
+  onPress: () => void;
 };
 
-export default function CheckBox({
-  isChecked = false,
-  onPress,
-}: CheckBoxProps) {
-  const [checked, setChecked] = useState(isChecked);
-
-  const toggleCheckBox = () => {
-    setChecked(!checked);
-  };
-
+export default function CheckBox({ isChecked, onPress }: CheckBoxProps) {
   return (
     <TouchableOpacity style={styles.container} onPress={onPress}>
-      <View style={[styles.checkbox, checked && styles.checked]}>
-        {checked && (
+      <View style={[styles.checkbox, isChecked && styles.checked]}>
+        {isChecked && (
           <Ionicons name='checkmark' size={16} color={colors.white} />
         )}
       </View>

@@ -29,10 +29,10 @@ const styles = StyleSheet.create({
     borderColor: colors.primaryDark,
     justifyContent: 'center',
     alignItems: 'center',
-    padding: 10,
     backgroundColor: colors.primaryMediumLight,
   },
   text: {
+    padding: 5,
     height: '100%',
     textAlignVertical: 'center',
     color: colors.greyDark,

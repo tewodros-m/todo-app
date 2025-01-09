@@ -12,7 +12,7 @@ import defaultStyles from '@/config/styles';
 
 interface AppTextInputProps extends TextInputProps {
   icon?: string;
-  style: Object;
+  style?: Object;
 }
 
 function AppTextInput({ icon, style, ...otherProps }: AppTextInputProps) {
@@ -38,14 +38,12 @@ function AppTextInput({ icon, style, ...otherProps }: AppTextInputProps) {
 const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
-    flex: 1,
-    height: '100%',
-    justifyContent: 'center',
-    alignItems: 'flex-start',
+    marginVertical: 10,
+    paddingHorizontal: 10,
+    width: '100%',
   },
   input: {
     fontSize: 16,
-    height: '100%',
     paddingHorizontal: 10,
     paddingVertical: 5,
     textAlignVertical: 'center',
@@ -53,6 +51,12 @@ const styles = StyleSheet.create({
       outlineWidth: 0,
       boxSizing: 'border-box',
     }),
+    borderWidth: 1,
+    borderColor: defaultStyles.colors.grey,
+    borderRadius: 5,
+    height: 40,
+    width: '100%',
+    flex: 1,
   },
   icon: {
     marginRight: 10,

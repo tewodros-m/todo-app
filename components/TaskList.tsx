@@ -1,74 +1,57 @@
 import React from 'react';
-import {
-  View,
-  Text,
-  StyleSheet,
-  FlatList,
-  Button,
-  TouchableOpacity,
-} from 'react-native';
+import { FlatList, StyleSheet, View } from 'react-native';
+import Task from './Task';
+import AppText from '@/components/AppText'; // Optional, replace with any text component you use
 
-interface Task {
-  id: number;
-  text: string;
-  completed: boolean;
-}
+type TaskType = {
+  id: string;
+  title: string;
+  description: string;
+  createdAt: string;
+  isCompleted: boolean;
+};
 
-interface TaskListProps {
-  tasks: Task[];
-  onToggleTask: (id: number) => void;
-  onDeleteTask: (id: number) => void;
-}
+type TaskListProps = {
+  tasks: TaskType[];
+};
 
-const TaskList: React.FC<TaskListProps> = ({
-  tasks,
-  onToggleTask,
-  onDeleteTask,
-}) => {
+export default function TaskList({ tasks }: TaskListProps) {
+  if (tasks.length === 0) {
+    return (
+      <View style={styles.emptyContainer}>
+        <AppText>No tasks available</AppText>
+      </View>
+    );
+  }
+
   return (
     <FlatList
       data={tasks}
-      keyExtractor={(item) => item.id.toString()}
+      keyExtractor={(item) => item.id}
       renderItem={({ item }) => (
-        <View style={styles.taskItem}>
-          <TouchableOpacity onPress={() => onToggleTask(item.id)}>
-            <Text
-              style={[styles.taskText, item.completed && styles.completedTask]}
-            >
-              {item.text}
-            </Text>
-          </TouchableOpacity>
-          <Button
-            title='Delete'
-            onPress={() => onDeleteTask(item.id)}
-            color='red'
-          />
-        </View>
+        <Task
+          title={item.title}
+          description={item.description}
+          createdAt={item.createdAt}
+          isCompleted={item.isCompleted}
+          onEdit={() => console.log(`Edit task with id: ${item.id}`)}
+          onDelete={() => console.log(`Delete task with id: ${item.id}`)}
+          onToggle={() => console.log(`Toggle task with id: ${item.id}`)}
+        />
       )}
+      contentContainerStyle={styles.listContainer}
     />
   );
-};
+}
 
 const styles = StyleSheet.create({
-  taskItem: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
+  listContainer: {
+    padding: 10,
+    gap: 10, // Add spacing between items
+  },
+  emptyContainer: {
+    justifyContent: 'center',
     alignItems: 'center',
-    padding: 15,
-    marginVertical: 5,
-    backgroundColor: '#f9f9f9',
-    borderRadius: 5,
-    borderColor: '#ddd',
-    borderWidth: 1,
-  },
-  taskText: {
-    flex: 1,
-    fontSize: 16,
-  },
-  completedTask: {
-    textDecorationLine: 'line-through',
-    color: 'gray',
+    padding: 20,
   },
 });
-
-export default TaskList;

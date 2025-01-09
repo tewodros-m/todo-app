@@ -6,6 +6,9 @@ import AppButton from '@/components/AppButton';
 import colors from '@/config/colors';
 import AppText from '@/components/AppText';
 import Task from '@/components/Task';
+import TaskList from '@/components/TaskList';
+import { mockTasks } from '@/data';
+import defaultStyles from '@/config/styles';
 
 export default function HomeScreen() {
   return (
@@ -19,32 +22,32 @@ export default function HomeScreen() {
         />
       </View>
       <AppText>Today's tasks</AppText>
-      <Task />
+      <TaskList tasks={mockTasks} />
     </Screen>
   );
 }
 
 const styles = StyleSheet.create({
   screen: {
-    gap: 10,
+    gap: 5,
     backgroundColor: colors.white,
-    marginHorizontal: 10,
+    marginHorizontal: 5,
   },
   searchContainer: {
-    marginVertical: 15,
-    marginHorizontal: 5,
-    width: '100%',
+    paddingHorizontal: 30,
+    // width: '100%',
     height: 40,
+
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
   },
   input: {
-    flex: 1,
-    borderWidth: 1,
-    borderColor: colors.greyMedium,
-    borderRadius: 5,
+    // flex: 1,
+    borderColor: defaultStyles.colors.greyMedium,
     borderTopRightRadius: 0,
     borderBottomRightRadius: 0,
+    paddingHorizontal: 0,
+    paddingVertical: 0,
   },
 });
